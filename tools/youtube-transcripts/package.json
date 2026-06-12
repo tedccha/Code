@@ -1,0 +1,41 @@
+{
+  "name": "@librarian/youtube-transcripts",
+  "version": "1.0.0",
+  "description": "Standalone YouTube transcript fetching tool with optional quality scoring and async polling support",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "youtube",
+    "transcripts",
+    "video",
+    "quality-scoring",
+    "polling",
+    "standalone"
+  ],
+  "author": "tedcha",
+  "license": "MIT",
+  "dependencies": {
+    "youtube-transcript": "^1.2.0"
+  },
+  "peerDependencies": {
+    "ai": "^4.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
