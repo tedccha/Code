@@ -94,6 +94,31 @@ Update the registry whenever:
 ✅ **Centralized improvements** — Fix youtube-transcripts once → all projects benefit  
 ✅ **Single source of truth** — Registry is the only place to discover tools
 
+## Deployment
+
+All projects deploy from the monorepo. Specify the root directory for each project on your hosting platform:
+
+**Vercel:**
+```
+Repository: https://github.com/you/Code
+Root Directory: MarketMapMaker  # or the-librarian, etc.
+```
+
+**Railway:**
+```
+Repository: https://github.com/you/Code
+Root Directory: the-librarian  # or any other project
+```
+
+**When you improve a tool:**
+```bash
+cd ~/Code/tools/youtube-transcripts
+git add . && git commit -m "improve: handle edge case"
+# Redeploy projects to pick up the improvement automatically
+```
+
+See [MONOREPO.md](./MONOREPO.md) for detailed deployment strategy.
+
 ---
 
-**Last updated:** 2026-06-12
+**Last updated:** 2026-06-15

@@ -120,16 +120,60 @@ cd ~/Code/the-librarian
 git log --oneline  # Shows project history only
 ```
 
-## Future: Optional Git Subtree
+## Deployment Strategy: Monorepo Only
 
-If in the future you want to merge a project's entire history into the monorepo (e.g., making it a true monorepo project), you can use `git subtree add`:
+All deployments (Vercel, Railway, etc.) pull from `~/Code/.git`. No npm publishing.
 
+**How it works:**
+
+1. **Deploy MarketMapMaker to Vercel:**
+   ```
+   Git repo: https://github.com/you/Code
+   Root directory: MarketMapMaker/
+   ```
+   
+   Vercel clones the monorepo, builds `MarketMapMaker/`, and deploys it.
+   MarketMapMaker imports tools via `@tools/youtube-transcripts` (path alias) → works because both are in same repo.
+
+2. **Deploy CompanyResearcher to Vercel:**
+   ```
+   Git repo: https://github.com/you/Code
+   Root directory: CompanyResearcher/
+   ```
+   
+   Same pattern—can import any tools it needs.
+
+3. **Deploy the-librarian to Railway:**
+   ```
+   Git repo: https://github.com/you/Code
+   Root directory: the-librarian/
+   ```
+   
+   Same pattern.
+
+**When you improve youtube-transcripts:**
 ```bash
-cd ~/Code
-git subtree add --prefix the-librarian ./the-librarian main
+cd ~/Code/tools/youtube-transcripts
+# Edit and commit
+git add . && git commit -m "improve: ..."
+
+# Redeploy projects that use it
+# MarketMapMaker: Push to trigger Vercel deploy
+# the-librarian: Push to trigger Railway deploy
 ```
 
-This would preserve the-librarian's full git history in the monorepo. But this is optional and not required—the current structure (separate repos + shared tools) works well.
+All deployed apps automatically use the updated tool (no npm versioning to manage).
+
+**Pros:**
+- ✅ No npm publishing workflow
+- ✅ Tool improvements immediately available to all projects
+- ✅ Single source of truth (monorepo)
+- ✅ Atomic commits (tool + project changes together)
+
+**Cons:**
+- ❌ Projects coupled to monorepo (can't deploy independently)
+- ❌ Monorepo is cloned on every deploy (some bloat)
+- ❌ Can't selectively publish only tools
 
 ---
 
