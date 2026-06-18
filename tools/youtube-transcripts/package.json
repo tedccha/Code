@@ -1,6 +1,6 @@
 {
-  "name": "@librarian/youtube-transcripts",
-  "version": "1.0.0",
+  "name": "@tedcha/youtube-transcripts",
+  "version": "1.0.1",
   "description": "Standalone YouTube transcript fetching tool with optional quality scoring and async polling support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

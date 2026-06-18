@@ -1,0 +1,17 @@
+{
+  "name": "dex-tana-sync",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "sync": "tsx sync.ts",
+    "cleanup-dupes": "tsx cleanup-dupes.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.2"
+  }
+}

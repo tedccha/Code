@@ -6,7 +6,7 @@ Before building a new feature, search this list first. If you're about to build 
 
 ---
 
-## 📚 Libraries
+## 📚 Embedded Services
 
 ### YouTube Transcript Extractor
 **ID:** `youtube-transcripts` | **Status:** Stable | **Quality:** 8.5/10
@@ -15,10 +15,11 @@ Extract YouTube transcripts with optional quality scoring and async polling supp
 
 | | |
 |---|---|
-| **Location** | `~/Code/tools/youtube-transcripts` |
-| **Import** | `import { fetchYoutubeTranscript } from '@tools/youtube-transcripts/src'` |
-| **Used by** | the-librarian |
-| **Docs** | [README](~/Code/tools/youtube-transcripts/README.md) |
+| **Owned by** | the-librarian |
+| **Location** | `~/Code/the-librarian/src/lib/youtube-transcripts` |
+| **Access** | REST API endpoints in the-librarian |
+| **For other apps** | Call the-librarian's API instead of importing directly |
+| **Docs** | [README](~/Code/the-librarian/src/lib/youtube-transcripts/README.md) |
 
 **What it does:**
 - Fetch transcripts via `youtube-transcript` library (public captions)

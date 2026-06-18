@@ -1,0 +1,2 @@
+{"ts":"2026-03-22T04:19:24Z","skill":"ship","project":"Code","source_branch":"main","event_type":"skill_invoked","severity":"medium","signal":"Test signal for sync verification","description":"Manual test signal written to verify sync pipeline","suggested_fix":null,"scope":"project"}
+{"ts":"2026-03-22T04:19:43Z","skill":"browse","project":"Code","source_branch":"main","event_type":"skill_invoked","severity":"low","signal":"Low severity test","description":"Should route to archive","suggested_fix":null,"scope":"project"}

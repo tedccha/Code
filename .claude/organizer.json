@@ -1,0 +1,5 @@
+{
+  "extends": "~/.claude/CLAUDE.md",
+  "reports_to": "/Users/teddycha/.claude/organizer/",
+  "local_overrides": {}
+}

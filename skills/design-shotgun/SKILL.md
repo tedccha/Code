@@ -1,0 +1,1 @@
+/Users/teddycha/Code/skills/gstack/design-shotgun/SKILL.md

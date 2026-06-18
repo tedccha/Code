@@ -1,0 +1,1 @@
+/Users/teddycha/Code/skills/gstack/pair-agent/SKILL.md
