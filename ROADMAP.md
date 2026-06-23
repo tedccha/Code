@@ -1,6 +1,39 @@
 # Code Projects — Master Roadmap
 
-Last updated: 2026-04-23
+Last updated: 2026-06-23
+
+---
+
+## Obed (Household Intelligence System)
+**Status:** Active — two-way sync system deployed
+**Repo:** `/Users/teddycha/Code/Obed`
+
+### Done
+- [x] Notion handbook restructured: 8 major sections (God, Family, Friends, Fun, Finance & Ops, School & Learning, Big Picture, Work)
+- [x] Universal Asset Pattern applied: Cars (BMW X5, Nissan Altima), Health (Teddy, Jennifer, BB, ZB), House (31 Longview Ln, 550 Vanderbilt)
+- [x] Two-way sync infrastructure: NotionSyncEngine, NotionOrchestrator, NotionSyncLog Prisma model
+- [x] Autos agent wired with sync (pre-sync + post-sync conflict detection)
+- [x] House agent wired with sync (HVAC maintenance tracking)
+- [x] Health agents created for all 4 family members with member-specific context
+- [x] Notion database ID discovery and population (`discover_notion_ids.ts`)
+- [x] Service Log + Providers DB schema applied consistently
+
+### Up Next
+- [ ] **Conflict Resolution UI** — Telegram alerts when Notion/Postgres diverge, user picks winner
+  - Detect conflicts in NotionSyncLog (both systems changed record)
+  - Alert user with field diffs + timestamps
+  - User resolves via Telegram button: "Use Notion" or "Use Postgres"
+  - Update losing system to match winner
+  - Mark NotionSyncLog.conflictState = "none"
+- [ ] Test conflict scenarios end-to-end (concurrent edits, offline sync)
+
+### Vision
+Unified household knowledge system: Notion as human-visible source of truth, Postgres as operational engine. Agents autonomously sync data while flagging conflicts for human resolution. Apply same pattern to: finances, education, work, events, recipes/meals.
+
+### Notes
+- Database IDs discovered: 6 health pages + service logs, 2 cars with service/provider DBs, house equipment tracking
+- Sync rate-limited via notionWithRetry (exponential backoff, Notion 3 req/sec)
+- All agents follow same sync lifecycle: pre-check → process → post-sync
 
 ---
 
