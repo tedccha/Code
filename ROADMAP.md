@@ -1,6 +1,6 @@
 # Code Projects — Master Roadmap
 
-Last updated: 2026-06-23
+Last updated: 2026-06-25
 
 ---
 
@@ -26,6 +26,26 @@ Last updated: 2026-06-23
   - Update losing system to match winner
   - Mark NotionSyncLog.conflictState = "none"
 - [ ] Test conflict scenarios end-to-end (concurrent edits, offline sync)
+- [ ] **Persistent Memory System** — Know us better over time (Phase 1 of 3)
+  - Goal: Obed builds durable knowledge about family members, routines, preferences, and patterns without keeping full history in token context
+  - Storage: New `Memory` table with embeddings (`memberId`, `category`, `content`, `embedding`, `createdAt`, `lastReferenced`, `confidence`)
+  - Categories: preferences, routines, health-history, relationships, work-context, recurring-needs, learned-patterns
+  - Capture: Periodically extract key facts from conversation summaries (every 10 messages) and store as memories
+  - Retrieval: RAG system — when agent needs context, query embeddings for top-K relevant memories (cosine similarity)
+  - Decay: Memories lose confidence over time unless reinforced; low-confidence old memories become candidates for cleanup
+  - Phase 1: Basic memory capture + retrieval (2 weeks)
+    - [ ] Design Memory schema and embedding strategy
+    - [ ] Add memory extraction to `updateRollingSummary()` (extract facts → embed → store)
+    - [ ] Add RAG to obedDialogApp (query memories before invoking agents)
+    - [ ] Test: Verify that Obed remembers health preferences, dietary restrictions, recurring events after 2+ weeks of conversation
+  - Phase 2: Memory management UI (1 week)
+    - [ ] Telegram command `/memories` to list/edit/delete memories for inspection
+    - [ ] Manual memory entry: `/remember "I'm allergic to shellfish"`
+    - [ ] Confidence scoring: mark memories as "definitely true" vs "probably true"
+  - Phase 3: Multi-year retention & decay (1 week)
+    - [ ] Implement confidence decay function (half-life)
+    - [ ] Archive low-confidence memories to cold storage
+    - [ ] Seasonal memory activation (e.g., "usually in NYC in winter")
 
 ### Vision
 Unified household knowledge system: Notion as human-visible source of truth, Postgres as operational engine. Agents autonomously sync data while flagging conflicts for human resolution. Apply same pattern to: finances, education, work, events, recipes/meals.
